@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { MainPage, MyPage, WritePage } from '../pages'
 import GlobalStyle from '../styles/GlobalStyle'
-import GlobalFonts from '../styles/fonts'
+import { GlobalFonts } from '../styles/fonts'
 import { ThemeProvider } from 'styled-components'
 import theme from '../styles/theme'
 
