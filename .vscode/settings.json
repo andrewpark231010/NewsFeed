@@ -1,5 +1,5 @@
 {
-    "commentTranslate.hover.enabled": false,
+    "commentTranslate.hover.enabled": true,
     "prettier.configPath": ".prettierrc.json",
     "editor.formatOnSave": true
 }

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     article, aside, canvas, details, embed, 
     figure, figcaption, footer, header, hgroup, 
     menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
+    time, mark, audio, video,button {
         margin: 0;
         padding: 0;
         border: 0;
@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* box-sizing / border-box */
-    li{
+    li, header, input, span,button,figure,img,button{
         box-sizing: border-box;
     }
 

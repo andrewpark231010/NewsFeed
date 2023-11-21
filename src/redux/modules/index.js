@@ -1,3 +1,3 @@
-import ThemeModeReducer from './ThemeMode';
+import themeMode from './themeMode'
 
-export {ThemeModeReducer};
+export { themeMode }

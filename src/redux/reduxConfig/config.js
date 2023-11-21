@@ -1,7 +1,7 @@
-import {combineReducers, createStore} from 'redux';
-import {ThemeModeReducer} from '../modules';
+import { combineReducers, createStore } from 'redux'
+import { themeMode } from '../modules'
 
-const reducers = combineReducers({ThemeModeReducer});
-const store = createStore(reducers);
+const reducers = combineReducers({ themeMode })
+const store = createStore(reducers)
 
-export default store;
+export default store

@@ -11,6 +11,12 @@ const MainPageCardList = () => {
       <CardComponents />
       <CardComponents />
       <CardComponents />
+      <CardComponents />
+      <CardComponents />
+      <CardComponents />
+      <CardComponents />
+      <CardComponents />
+      <CardComponents />
     </S.MainCardListUl>
   )
 }

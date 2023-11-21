@@ -6,23 +6,28 @@ import { ThemeProvider } from 'styled-components'
 import { PageWrapper } from '../styles/common.styled'
 import theme from '../styles/theme'
 import GlobalStyle from '../styles/GlobalStyle'
+import Layout from '../components/Layout/Layout'
+import { useSelector } from 'react-redux'
 
-const router = () => {
+const Router = () => {
+  const currentThemeMode = useSelector((state) => state.themeMode.mode)
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme['light']}>
-        <GlobalStyle />
-        <GlobalFont />
-        <PageWrapper>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/my" element={<MyPage />} />
-            <Route path="/write" element={<WritePage />} />
-          </Routes>
-        </PageWrapper>
+      <GlobalStyle />
+      <GlobalFont />
+      <ThemeProvider theme={theme[currentThemeMode]}>
+        <Layout>
+          <PageWrapper>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/my" element={<MyPage />} />
+              <Route path="/write" element={<WritePage />} />
+            </Routes>
+          </PageWrapper>
+        </Layout>
       </ThemeProvider>
     </BrowserRouter>
   )
 }
 
-export default router
+export default Router
