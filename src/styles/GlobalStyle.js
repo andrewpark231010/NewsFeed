@@ -26,6 +26,12 @@ const GlobalStyle = createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
+
+    /* box-sizing / border-box */
+    li{
+        box-sizing: border-box;
+    }
+
     html{
         font-size: 62.5%;
     }
