@@ -1,4 +1,4 @@
-const {createGlobalStyle} = require('styled-components');
+const { createGlobalStyle } = require('styled-components')
 
 const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -26,6 +26,9 @@ const GlobalStyle = createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
+    html{
+        font-size: 62.5%;
+    }
     body {
         line-height: 1;
     }
@@ -44,6 +47,6 @@ const GlobalStyle = createGlobalStyle`
         border-collapse: collapse;
         border-spacing: 0;
     }
-`;
+`
 
-export default GlobalStyle;
+export default GlobalStyle
