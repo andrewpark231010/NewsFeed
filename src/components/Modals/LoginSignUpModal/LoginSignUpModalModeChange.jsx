@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginSignUpModalModeChange } from '../../../redux/modules/modalToggle'
+import * as S from './LoginSignUpModal.styled'
 
 const LoginSignUpModalModeChange = () => {
   const currentMode = useSelector(
@@ -11,12 +12,12 @@ const LoginSignUpModalModeChange = () => {
     dispatch(loginSignUpModalModeChange())
   }
   return (
-    <div>
+    <S.StModeChangeDiv>
       <span>{currentMode.modeChangeComment}</span>
       <button onClick={changeLoginSignUpModalModeHandler}>
         {currentMode.changeMode}
       </button>
-    </div>
+    </S.StModeChangeDiv>
   )
 }
 

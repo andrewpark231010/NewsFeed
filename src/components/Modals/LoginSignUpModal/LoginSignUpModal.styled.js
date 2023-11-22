@@ -58,7 +58,22 @@ export const StLoginModalSocialAreaDiv = styled.div`
 `
 export const StLoginModalSocialButtonDiv = styled.div`
   display: flex;
+  margin-bottom: 8rem;
   & > button {
+    cursor: pointer;
     margin: 2.5rem;
+    background: none;
+  }
+`
+export const StModeChangeDiv = styled.div`
+  font-size: 2rem;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  & > button {
+    font-weight: bold;
+    background: none;
+    margin-left: 0.5rem;
+    cursor: pointer;
   }
 `
