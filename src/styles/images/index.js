@@ -10,6 +10,7 @@ import naver from './LoginSignUpModal/naver.svg'
 
 import editIcon from './MyPageImage/editicon.svg'
 import sampleImg from './MyPageImage/sampleImg.jpg'
+import MyProfileUploadImg from './WritePageImage/MyProfileUploadImg.svg'
 
 export {
   dark,
@@ -22,4 +23,5 @@ export {
   naver,
   editIcon,
   sampleImg,
+  MyProfileUploadImg,
 }
