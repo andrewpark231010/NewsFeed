@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import EditIcon from '/Users/a1234/Desktop/newsfeedproject/NewsFeed/src/styles/images/MyPageImage/editicon.svg'
 
 // 프로필 - 이미지,닉네임,수정버튼,이메일,소개글
 export const MyBox = styled.div`

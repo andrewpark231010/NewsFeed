@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from 'redux'
-import { themeMode } from '../modules'
+import { themeMode, modalToggle } from '../modules'
 
-const reducers = combineReducers({ themeMode })
+const reducers = combineReducers({ themeMode, modalToggle })
 const store = createStore(reducers)
 
 export default store

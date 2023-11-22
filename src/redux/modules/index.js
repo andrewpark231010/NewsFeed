@@ -1,3 +1,3 @@
 import themeMode from './themeMode'
-
-export { themeMode }
+import modalToggle from './modalToggle'
+export { themeMode, modalToggle }

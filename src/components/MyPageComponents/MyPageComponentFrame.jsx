@@ -1,19 +1,22 @@
 import React from 'react'
 import * as St from './MyPageComponents.styled'
-import ProfileImg from '/Users/a1234/Desktop/newsfeedproject/NewsFeed/src/styles/images/MyPageImage/sampleImg.jpg'
-import EditIcon from '/Users/a1234/Desktop/newsfeedproject/NewsFeed/src/styles/images/MyPageImage/editicon.svg'
+import { editIcon, sampleImg } from '../../styles/images'
 function MyPageComponentFrame() {
+  // 2. 버튼 클릭 시 useDispatch를 통해서 modules-modalToggle-editToggled 값을 true면 false false면 true로 변경되게 로직 구성
   return (
     <div>
+      {/* 3. 모달 조건부 랜더링 처리 */}
+      {/* editToggled 의 값에 따라서 EditProfileModal이 나오게 처리 */}
       <St.MyBox>
         <St.MyImgWrapper>
-          <St.MyProfileImg src={ProfileImg}></St.MyProfileImg>
+          <St.MyProfileImg src={sampleImg}></St.MyProfileImg>
         </St.MyImgWrapper>
 
         <St.MyProfileBox>
           <St.NickNameAndBtnWrapper>
             <St.MyProfileNickName> 최우제 </St.MyProfileNickName>
-            <St.MyEditBtn src={EditIcon}></St.MyEditBtn>
+            {/* 1. 버튼클릭이벤트 생성 */}
+            <St.MyEditBtn src={editIcon}></St.MyEditBtn>
           </St.NickNameAndBtnWrapper>
 
           <St.MyEmailAndIntroWrapper>

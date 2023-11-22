@@ -6,27 +6,37 @@ import HeaderSearchForm from './HeaderSearchForm'
 import { menu } from '../../../styles/images'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleTheme } from '../../../redux/modules/themeMode'
+import LoginSignUpModal from '../../Modals/LoginSignUpModal/LoginSignUpModal'
+import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
 
 const HeaderNavArea = () => {
   const dispatch = useDispatch()
   const currentThemeMode = useSelector((state) => state.themeMode.iconImage)
+  const loginSignUpIsToggled = useSelector(
+    (state) => state.modalToggle.loginSignUpToggled
+  )
   const navigate = useNavigate()
-  const [isToggled, setIsToggled] = useState(false)
+
+  // state : 메뉴 토글, 로그인 모달
+  const [MenuToggled, setMenuToggled] = useState(false)
 
   const navToggleHandler = () => {
-    setIsToggled((prev) => (prev ? false : true))
+    setMenuToggled((prev) => (prev ? false : true))
   }
   const goToMyPageHandler = () => {
-    setIsToggled((prev) => (prev ? false : true))
+    setMenuToggled((prev) => (prev ? false : true))
     navigate('/my')
   }
   const goToWriteHandler = () => {
-    setIsToggled((prev) => (prev ? false : true))
+    setMenuToggled((prev) => (prev ? false : true))
     navigate('/write')
   }
-  const openLoginSignInModalHandler = () => {}
+  const openLoginSignInModalHandler = () => {
+    dispatch(loginSignUpModalToggle())
+    setMenuToggled((prev) => (prev ? false : true))
+  }
   const LogoutHandler = () => {
-    setIsToggled((prev) => (prev ? false : true))
+    setMenuToggled((prev) => (prev ? false : true))
   }
   const themeChangeHandler = () => {
     dispatch(toggleTheme())
@@ -41,33 +51,39 @@ const HeaderNavArea = () => {
     },
     { text: '로그아웃', handler: LogoutHandler, loginVisible: true },
   ]
-  const isLogin = true
+  const isLogin = false
   return (
-    <S.StHeaderNavArea>
-      <S.StHeaderModeChangeButton onClick={themeChangeHandler}>
-        <figure>
-          <img src={currentThemeMode} />
-        </figure>
-      </S.StHeaderModeChangeButton>
-      <S.StHeaderMobileToggleButton onClick={navToggleHandler}>
-        <figure>
-          <img src={menu} />
-        </figure>
-      </S.StHeaderMobileToggleButton>
+    <>
+      {/* 로그인 모달 생성 */}
+      {loginSignUpIsToggled && <LoginSignUpModal />}
 
-      <S.StHeaderButtonArea $isToggled={isToggled}>
-        <HeaderSearchForm setIsToggled={setIsToggled} />
-        {HEADER_BUTTON.filter((button) => button.loginVisible === isLogin).map(
-          (button) => (
+      {/* Nav 구성요소 */}
+      <S.StHeaderNavArea>
+        <S.StHeaderModeChangeButton onClick={themeChangeHandler}>
+          <figure>
+            <img src={currentThemeMode} />
+          </figure>
+        </S.StHeaderModeChangeButton>
+        <S.StHeaderMobileToggleButton onClick={navToggleHandler}>
+          <figure>
+            <img src={menu} />
+          </figure>
+        </S.StHeaderMobileToggleButton>
+
+        <S.StHeaderButtonArea $isToggled={MenuToggled}>
+          <HeaderSearchForm setMenuToggled={setMenuToggled} />
+          {HEADER_BUTTON.filter(
+            (button) => button.loginVisible === isLogin
+          ).map((button) => (
             <HeaderButton
               key={button.text}
               text={button.text}
               handler={button.handler}
             />
-          )
-        )}
-      </S.StHeaderButtonArea>
-    </S.StHeaderNavArea>
+          ))}
+        </S.StHeaderButtonArea>
+      </S.StHeaderNavArea>
+    </>
   )
 }
 

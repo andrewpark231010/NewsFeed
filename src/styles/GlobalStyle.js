@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* box-sizing / border-box */
-    li, header, input, span,button,figure,img,button{
+    li, header, input, span,button,figure,img,button, div,form{
         box-sizing: border-box;
     }
     html{
