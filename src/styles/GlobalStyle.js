@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
     li, header, input, span,button,figure,img,button{
         box-sizing: border-box;
     }
-
     html{
         font-size: 62.5%;
     }

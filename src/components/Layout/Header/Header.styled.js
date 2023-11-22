@@ -11,7 +11,6 @@ export const StHeader = styled.header`
 `
 export const StHeaderTitle = styled.div`
   display: flex;
-  width: ${100 / 3}%;
   align-items: center;
   cursor: pointer;
   @media (max-width: 1000px) {
@@ -94,6 +93,9 @@ export const StHeaderMobileToggleButton = styled.button`
   }
 `
 export const StHeaderModeChangeButton = styled.button`
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
   background: none;
   padding: 0;
   border: none;
