@@ -15,13 +15,13 @@ const MainPageCardList = () => {
     const querySnapshot = await getDocs(q)
     let postData = []
     querySnapshot.forEach((item) => postData.push(item.data()))
-    console.log(postData)
     dispatch(setPostData(postData))
   }
 
   useEffect(() => {
     getPostData()
   }, [])
+
   return (
     <S.MainCardListUl>
       {dataList.map((item) => (

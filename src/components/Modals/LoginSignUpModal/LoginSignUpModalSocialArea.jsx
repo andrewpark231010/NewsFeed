@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './LoginSignUpModal.styled'
 import { github, google, twitter } from '../../../styles/images'
-import { auth } from '../../../API/Firebase/Firebase'
+import { auth, getMemberRef } from '../../../API/Firebase/Firebase'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import LoadingProgress from '../../CommonComponents/LoadingProgress'
+import { getDoc, setDoc } from 'firebase/firestore'
 
 const LoginSignUpModalSocialArea = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -20,7 +21,6 @@ const LoginSignUpModalSocialArea = () => {
         setIsLoading(true)
         const result = await signInWithPopup(auth, googleProvider)
         const credential = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
         setIsLoading(false)
         dispatch(loginSignUpModalToggle())
       } catch (err) {

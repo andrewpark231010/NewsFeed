@@ -42,6 +42,7 @@ const HeaderNavArea = () => {
     loginOutUserHandler()
     dispatch(deleteUserInfo())
     setMenuToggled((prev) => (prev ? false : true))
+    navigate('/')
   }
 
   const themeChangeHandler = () => {
@@ -80,7 +81,7 @@ const HeaderNavArea = () => {
         <S.StHeaderButtonArea $isToggled={MenuToggled}>
           <HeaderSearchForm setMenuToggled={setMenuToggled} />
           {HEADER_BUTTON.filter(
-            (button) => button.loginVisible === !!userInfo
+            (button) => button.loginVisible === !!userInfo.email
           ).map((button) => (
             <HeaderButton
               key={button.text}

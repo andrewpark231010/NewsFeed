@@ -14,8 +14,13 @@ export const deleteUserInfo = () => {
   }
 }
 
+const defaultUserData = {
+  displayName: '',
+  email: '',
+  photoURL: '',
+}
 const initState = {
-  currentUserInfo: null,
+  currentUserInfo: defaultUserData,
 }
 
 const user = (state = initState, { type, payload }) => {
@@ -28,7 +33,7 @@ const user = (state = initState, { type, payload }) => {
     case DELETE_USER_INFO:
       return {
         ...state,
-        currentUserInfo: null,
+        currentUserInfo: defaultUserData,
       }
     default:
       return state

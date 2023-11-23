@@ -4,10 +4,17 @@ import * as S from './LoginSignUpModal.styled'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth'
-import { auth } from '../../../API/Firebase/Firebase'
+import {
+  auth,
+  getMemberRef,
+  pathReference,
+} from '../../../API/Firebase/Firebase'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
 import LoadingProgress from '../../CommonComponents/LoadingProgress'
+import { setDoc } from 'firebase/firestore'
+import { getDownloadURL, ref } from 'firebase/storage'
 
 const LoginSignUpModalForm = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -38,6 +45,7 @@ const LoginSignUpModalForm = () => {
       setIsLoading(false)
     }
   }
+
   // 회원가입 모드일 때
   const signUpNewUserHandler = async () => {
     try {
@@ -47,6 +55,12 @@ const LoginSignUpModalForm = () => {
         email,
         password
       )
+      const fileName = 'defaultUser.webp'
+      const url = await getDownloadURL(ref(pathReference, fileName))
+      updateProfile(auth.currentUser, {
+        displayName: userCredential.user.email.split('@')[0],
+        photoURL: url,
+      })
       setIsLoading(false)
       dispatch(loginSignUpModalToggle())
     } catch (err) {
@@ -54,7 +68,6 @@ const LoginSignUpModalForm = () => {
       setIsLoading(false)
     }
   }
-
   const onFormHandler = (e) => {
     e.preventDefault()
     currentMode.id ? signUpNewUserHandler() : LoginUserHandler()
