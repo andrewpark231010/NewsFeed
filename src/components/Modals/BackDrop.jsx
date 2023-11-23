@@ -18,6 +18,7 @@ const StBackDrop = styled.div`
   top: 0;
   width: 100vw;
   height: 100vh;
+  backdrop-filter: blur(5px);
   z-index: 10;
 `
 export default BackDrop

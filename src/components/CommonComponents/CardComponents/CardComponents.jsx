@@ -2,26 +2,13 @@ import React from 'react'
 import * as S from './CardComponents.styled'
 import CardComponentsFirstLine from './CardComponentsFirstLine'
 
-const CardComponents = () => {
+const CardComponents = ({ data }) => {
   return (
-    <S.StCardLi>
-      <CardComponentsFirstLine />
-      <h2>리그오브레전드 공략</h2>
+    <S.StCardLi $img={data.imgsrc}>
+      <CardComponentsFirstLine date={data.date} user={data.user} />
+      <h2>{data.title}</h2>
       <S.StContentContainerDiv>
-        <p>
-          리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어 리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어리그오브레전드는 탑, 미드, 정글, 원딜, 서폿으로
-          이루어져있어
-        </p>
+        <p>{data.content}</p>
       </S.StContentContainerDiv>
     </S.StCardLi>
   )

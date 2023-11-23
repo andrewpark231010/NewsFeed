@@ -6,7 +6,7 @@ export const StCardLi = styled.li`
   height: 32rem;
   width: 23rem;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url('https://cdn.gametoc.co.kr/news/photo/202309/75833_234553_4219.jpg');
+    url(${(props) => props.$img});
   background-position: center;
   background-size: cover;
   border-radius: 10px;

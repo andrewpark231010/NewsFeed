@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from './Header.styled'
 import HeaderButton from './HeaderButton'
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleTheme } from '../../../redux/modules/themeMode'
 import LoginSignUpModal from '../../Modals/LoginSignUpModal/LoginSignUpModal'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
+import { loginOutUserHandler } from '../../../API/Firebase/Firebase'
+import { deleteUserInfo } from '../../../redux/modules/user'
 
 const HeaderNavArea = () => {
   const dispatch = useDispatch()
@@ -15,6 +17,7 @@ const HeaderNavArea = () => {
   const loginSignUpIsToggled = useSelector(
     (state) => state.modalToggle.loginSignUpToggled
   )
+  const userInfo = useSelector((state) => state.user.currentUserInfo)
   const navigate = useNavigate()
 
   // state : 메뉴 토글, 로그인 모달
@@ -36,11 +39,15 @@ const HeaderNavArea = () => {
     setMenuToggled((prev) => (prev ? false : true))
   }
   const LogoutHandler = () => {
+    loginOutUserHandler()
+    dispatch(deleteUserInfo())
     setMenuToggled((prev) => (prev ? false : true))
   }
+
   const themeChangeHandler = () => {
     dispatch(toggleTheme())
   }
+
   const HEADER_BUTTON = [
     { text: '내 정보', handler: goToMyPageHandler, loginVisible: true },
     { text: '글쓰기', handler: goToWriteHandler, loginVisible: true },
@@ -51,7 +58,7 @@ const HeaderNavArea = () => {
     },
     { text: '로그아웃', handler: LogoutHandler, loginVisible: true },
   ]
-  const isLogin = false
+
   return (
     <>
       {/* 로그인 모달 생성 */}
@@ -73,7 +80,7 @@ const HeaderNavArea = () => {
         <S.StHeaderButtonArea $isToggled={MenuToggled}>
           <HeaderSearchForm setMenuToggled={setMenuToggled} />
           {HEADER_BUTTON.filter(
-            (button) => button.loginVisible === isLogin
+            (button) => button.loginVisible === !!userInfo
           ).map((button) => (
             <HeaderButton
               key={button.text}
