@@ -15,6 +15,7 @@ const MainPageCardList = () => {
     const querySnapshot = await getDocs(q)
     let postData = []
     querySnapshot.forEach((item) => postData.push(item.data()))
+
     dispatch(setPostData(postData))
   }
 

@@ -5,7 +5,11 @@ import CardComponentsFirstLine from './CardComponentsFirstLine'
 const CardComponents = ({ data }) => {
   return (
     <S.StCardLi $img={data.imgsrc}>
-      <CardComponentsFirstLine date={data.date} user={data.user} />
+      <CardComponentsFirstLine
+        date={data.date}
+        user={data.user}
+        userProfile={data.userProfile}
+      />
       <h2>{data.title}</h2>
       <S.StContentContainerDiv>
         <p>{data.content}</p>

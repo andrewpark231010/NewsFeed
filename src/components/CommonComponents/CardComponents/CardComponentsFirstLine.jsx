@@ -1,15 +1,19 @@
 import React from 'react'
 import * as S from './CardComponents.styled'
 
-const CardComponentsFirstLine = ({ title, date }) => {
+const CardComponentsFirstLine = ({ user, date, userProfile }) => {
+  date = date.toDate()
+  const formatDate = `${date.getFullYear()}-${
+    date.getMonth() + 1
+  }-${date.getDate()}`
   return (
     <S.StCardLiFirstLine>
       <figure>
-        <img src="https://static.vecteezy.com/system/resources/thumbnails/001/840/612/small/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg" />
+        <img src={userProfile} />
       </figure>
       <S.StCardLiFirstLineText>
-        <span>{title}</span>
-        <span>{date}</span>
+        <span>{user}</span>
+        <span>{formatDate}</span>
       </S.StCardLiFirstLineText>
     </S.StCardLiFirstLine>
   )
