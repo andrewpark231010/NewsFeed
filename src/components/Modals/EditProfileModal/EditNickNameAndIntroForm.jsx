@@ -2,19 +2,22 @@ import { React, useState } from 'react'
 import * as St from './EditProfileModal.styled'
 import { MyProfileUploadImg } from '../../../styles/images'
 import { auth, db } from '../../../API/Firebase/Firebase'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { doc, updateDoc } from 'firebase/firestore'
 import { pathReference } from '../../../API/Firebase/Firebase'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
+import { editModalToggle } from '../../../redux/modules/modalToggle'
 
 function EditNickNameAndIntroForm() {
   const [img, setImg] = useState('')
-
   const userData = useSelector((state) => state.user.currentUserInfo)
   const [nickName, setNickName] = useState(userData.displayName)
   const [intro, setIntro] = useState(userData.introduce)
 
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const imgSelectHandler = (event) => {
     setImg(event.target.files[0])
   }
@@ -29,6 +32,14 @@ function EditNickNameAndIntroForm() {
 
   const compBtnClickHandler = (event) => {
     event.preventDefault()
+    if (
+      nickName === userData.displayName &&
+      intro === userData.introduce &&
+      !img
+    ) {
+      window.alert('수정사항이 없습니다.')
+      return
+    }
     updateUserInfo()
   }
 
@@ -50,6 +61,8 @@ function EditNickNameAndIntroForm() {
         photoURL: imgUrl,
       })
     }
+    dispatch(editModalToggle())
+    navigate('/')
   }
 
   return (
