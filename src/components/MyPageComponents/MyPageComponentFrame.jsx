@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react'
 import * as St from './MyPageComponents.styled'
-import { editIcon } from '../../styles/images'
-import { useSelector } from 'react-redux'
-import { getDoc } from 'firebase/firestore'
-import { getMemberRef } from '../../API/Firebase/Firebase'
+import { useSelector, useDispatch } from 'react-redux'
+import { editModalToggle } from '../../redux/modules/modalToggle'
+import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal'
 
+// 2. 버튼 클릭 시 useDispatch를 통해서 modules-modalToggle-editToggled 값을 true면 false false면 true로 변경되게 로직 구성
 function MyPageComponentFrame() {
+  const dispatch = useDispatch()
+  const modalToggle = useSelector((state) => state.modalToggle.editToggled)
   const userInfo = useSelector((state) => state.user.currentUserInfo)
-  console.log(userInfo)
-  useEffect(() => {}, [])
-  // 2. 버튼 클릭 시 useDispatch를 통해서 modules-modalToggle-editToggled 값을 true면 false false면 true로 변경되게 로직 구성
+  const clickEditBtnHandler = () => {
+    //editToggled 값을 true면 false false면 true로 변경되는 액션 호출
+    dispatch(editModalToggle())
+  }
+
   return (
     <div>
-      {/* 3. 모달 조건부 랜더링 처리 */}
-      {/* editToggled 의 값에 따라서 EditProfileModal이 나오게 처리 */}
+      {modalToggle && <EditProfileModal />}
       <St.MyBox>
         <St.MyImgWrapper>
           <St.MyProfileImg src={userInfo.photoURL}></St.MyProfileImg>
@@ -23,7 +25,7 @@ function MyPageComponentFrame() {
           <St.NickNameAndBtnWrapper>
             <St.MyProfileNickName>{userInfo.displayName}</St.MyProfileNickName>
             {/* 1. 버튼클릭이벤트 생성 */}
-            <St.MyEditBtn src={editIcon}></St.MyEditBtn>
+            <St.MyEditBtn onClick={clickEditBtnHandler}></St.MyEditBtn>
           </St.NickNameAndBtnWrapper>
 
           <St.MyEmailAndIntroWrapper>

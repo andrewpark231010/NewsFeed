@@ -1,12 +1,20 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { loginSignUpModalToggle } from '../../redux/modules/modalToggle'
+import {
+  loginSignUpModalToggle,
+  editModalToggle,
+} from '../../redux/modules/modalToggle'
 
-const BackDrop = () => {
+const BackDrop = ({ modalMode }) => {
   const dispatch = useDispatch()
   const modalToggleHandler = () => {
-    dispatch(loginSignUpModalToggle())
+    if (modalMode === 'login') {
+      dispatch(loginSignUpModalToggle())
+    }
+    if (modalMode === 'edit') {
+      dispatch(editModalToggle())
+    }
   }
   return <StBackDrop onClick={modalToggleHandler}></StBackDrop>
 }

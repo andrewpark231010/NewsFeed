@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { editIcon } from '../../styles/images'
 
 // 프로필 - 이미지,닉네임,수정버튼,이메일,소개글
 export const MyBox = styled.div`
@@ -33,13 +34,14 @@ export const MyProfileNickName = styled.h2`
   height: 1.4rem;
 `
 
-export const MyEditBtn = styled.img`
-  width: 2rem;
-  height: 2.4rem;
-  right: 40%;
-  padding-top: 1px;
+export const MyEditBtn = styled.button`
+  background-image: url(${editIcon});
+  background-size: cover;
+  width: 2.5rem;
+  height: 2.5rem;
   margin-top: 0.5rem;
-  margin-left: 0.7rem;
+  margin-left: 0.9rem;
+  object-fit: cover;
 
   &:hover {
     cursor: pointer;

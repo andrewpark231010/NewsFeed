@@ -6,7 +6,7 @@ const LoginSignUpModal = () => {
   return (
     <>
       {ReactDOM.createPortal(
-        <BackDrop />,
+        <BackDrop modalMode="login" />,
         document.getElementById('backdrop-root')
       )}
       {ReactDOM.createPortal(
