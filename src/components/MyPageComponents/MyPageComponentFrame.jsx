@@ -21,7 +21,7 @@ function MyPageComponentFrame() {
         </St.MyPost>
         <St.MyPostList>
           {userData.map((post) => (
-            <CardComponents data={post} />
+            <CardComponents key={post.id} data={post} />
           ))}
         </St.MyPostList>
       </St.MyPostWrapper>

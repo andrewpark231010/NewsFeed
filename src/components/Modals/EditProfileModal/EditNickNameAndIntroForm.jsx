@@ -9,6 +9,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { editModalToggle } from '../../../redux/modules/modalToggle'
+import { upDateUserInfo } from '../../../redux/modules/user'
 
 function EditNickNameAndIntroForm() {
   const [img, setImg] = useState('')
@@ -21,7 +22,6 @@ function EditNickNameAndIntroForm() {
   const imgSelectHandler = (event) => {
     setImg(event.target.files[0])
   }
-  console.log(userData)
   const nickNameSubmitHandler = (event) => {
     setNickName(event.target.value)
   }
@@ -49,8 +49,8 @@ function EditNickNameAndIntroForm() {
 
       await updateDoc(ref, { introduce: intro })
     }
+    let imgUrl = userData.photoURL
     if (userData.displayName !== nickName || img) {
-      let imgUrl = userData.photoURL
       if (img) {
         const upDateProfileRef = ref(pathReference, `profileImages/${img.name}`)
         await uploadBytes(upDateProfileRef, img)
@@ -61,8 +61,14 @@ function EditNickNameAndIntroForm() {
         photoURL: imgUrl,
       })
     }
+    dispatch(
+      upDateUserInfo({
+        displayName: nickName,
+        photoURL: imgUrl,
+        introduce: intro,
+      })
+    )
     dispatch(editModalToggle())
-    navigate('/')
   }
 
   return (

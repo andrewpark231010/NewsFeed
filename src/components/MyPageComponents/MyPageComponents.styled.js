@@ -4,7 +4,7 @@ import { editIcon } from '../../styles/images'
 // 프로필 - 이미지,닉네임,수정버튼,이메일,소개글
 export const MyBox = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   height: 22rem;
   width: 60%;
   margin: 5rem auto 0 auto;
