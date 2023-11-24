@@ -17,7 +17,11 @@ const MainPage = () => {
         setSortMode={setSortMode}
         sortMode={sortMode}
       />
-      <MainPageCardList select={select} sortMode={sortMode} />
+      <MainPageCardList
+        select={select}
+        sortMode={sortMode}
+        setSelect={setSelect}
+      />
     </div>
   )
 }

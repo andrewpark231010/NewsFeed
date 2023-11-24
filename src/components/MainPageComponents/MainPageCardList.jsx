@@ -3,13 +3,22 @@ import CardComponents from '../CommonComponents/CardComponents/CardComponents'
 import * as S from './MainPageComponents.styled'
 import { useSelector } from 'react-redux'
 
-const MainPageCardList = ({ select, sortMode }) => {
+const MainPageCardList = ({ select, sortMode, setSelect }) => {
   const dataList = useSelector((state) => state.postData.postData)
   let filterDataList = []
-  if (select === '0') {
-    filterDataList = dataList
+  const inputValue = useSelector((state) => state.postData.searchValue)
+  if (inputValue) {
+    setSelect('0')
+    filterDataList = dataList.filter(
+      (data) =>
+        data.title.includes(inputValue) || data.content.includes(inputValue)
+    )
   } else {
-    filterDataList = dataList.filter((data) => data.category === select)
+    if (select === '0') {
+      filterDataList = dataList
+    } else {
+      filterDataList = dataList.filter((data) => data.category === select)
+    }
   }
 
   if (sortMode) {
