@@ -6,14 +6,9 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth'
-import {
-  auth,
-  getMemberRef,
-  pathReference,
-} from '../../../API/Firebase/Firebase'
+import { auth, pathReference } from '../../../API/Firebase/Firebase'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
 import LoadingProgress from '../../CommonComponents/LoadingProgress'
-import { setDoc } from 'firebase/firestore'
 import { getDownloadURL, ref } from 'firebase/storage'
 
 const LoginSignUpModalForm = () => {
@@ -25,12 +20,21 @@ const LoginSignUpModalForm = () => {
     (state) => state.modalToggle.loginSignUpModalMode
   )
 
-  /* TO-DO
-    validation Check 구현 필요
-  */
-
   // 로그인모드 일 때
+  const validationCheck = (emailValue, passwordValue) => {
+    if (!emailValue.trim() || !passwordValue.trim()) {
+      window.alert('모두 입력해주세요')
+      return false
+    }
+    if (!(emailValue.includes('.com') || emailValue.includes('.net'))) {
+      window.alert('이메일 양식을 확인해주세요')
+      return false
+    }
+    return true
+  }
+
   const LoginUserHandler = async () => {
+    if (!validationCheck(email, password)) return
     try {
       setIsLoading(true)
       const userCredential = await signInWithEmailAndPassword(
@@ -84,6 +88,7 @@ const LoginSignUpModalForm = () => {
         placeholder="비밀번호를 입력해주세요"
         type="password"
         value={password}
+        minLength={6}
         onChange={(e) => setPassword(e.currentTarget.value)}
       />
       <button type="submit">{currentMode.text}</button>
