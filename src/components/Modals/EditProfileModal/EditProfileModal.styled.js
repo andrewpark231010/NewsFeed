@@ -79,6 +79,9 @@ export const StcompBtn = styled.button`
   color: #fff;
   background: #1c1c1c;
   padding: 1rem 0;
+  &:hover {
+    cursor: pointer;
+  }
 `
 export const StEditForm = styled.form`
   display: flex;
