@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {
   loginSignUpModalToggle,
   editModalToggle,
+  detailModalToggle,
 } from '../../redux/modules/modalToggle'
 
 const BackDrop = ({ modalMode }) => {
@@ -14,6 +15,9 @@ const BackDrop = ({ modalMode }) => {
     }
     if (modalMode === 'edit') {
       dispatch(editModalToggle())
+    }
+    if (modalMode === 'detail') {
+      dispatch(detailModalToggle())
     }
   }
   return <StBackDrop onClick={modalToggleHandler}></StBackDrop>

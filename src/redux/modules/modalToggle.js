@@ -1,7 +1,8 @@
 const LOGIN_SIGNUP_TOGGLE = 'LOGIN_SIGNUP_TOGGLE'
 const LOGIN_SIGNUP_MODE_CHANGE = 'LOGIN_SIGNUP_MODE_CHANGE'
 const EDIT_TOGGLED = 'EDIT_TOGGLED'
-
+const DETAIL_TOGGLED = 'DETAIL_TOGGLED'
+const SET_DETAIL_MODAL_DATA = 'SET_DETAIL_MODAL_DATA'
 export const loginSignUpModalToggle = () => {
   return {
     type: LOGIN_SIGNUP_TOGGLE,
@@ -14,6 +15,12 @@ export const loginSignUpModalModeChange = () => {
 }
 export const editModalToggle = () => {
   return { type: EDIT_TOGGLED }
+}
+export const detailModalToggle = () => {
+  return { type: DETAIL_TOGGLED }
+}
+export const setDetailModalData = (payload) => {
+  return { type: SET_DETAIL_MODAL_DATA, payload }
 }
 
 const LoginSignUpMode = [
@@ -36,6 +43,7 @@ const initState = {
   loginSignUpModalMode: LoginSignUpMode[0],
   detailToggled: false,
   editToggled: false,
+  currentDetailCardData: {},
 }
 
 const themeMode = (state = initState, { type, payload }) => {
@@ -58,6 +66,16 @@ const themeMode = (state = initState, { type, payload }) => {
       return {
         ...state,
         editToggled: !state.editToggled,
+      }
+    case DETAIL_TOGGLED:
+      return {
+        ...state,
+        detailToggled: !state.detailToggled,
+      }
+    case SET_DETAIL_MODAL_DATA:
+      return {
+        ...state,
+        currentDetailCardData: payload,
       }
     default:
       return state
