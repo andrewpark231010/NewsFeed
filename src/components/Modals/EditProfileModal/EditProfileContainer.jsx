@@ -1,15 +1,13 @@
 import React from 'react'
 import EditNickNameAndIntroForm from './EditNickNameAndIntroForm'
-import EditProfileImage from './EditProfileImage'
-
+import * as St from './EditProfileModal.styled'
 function EditProfileContainer() {
   return (
-    <div>
-      <h1>프로필 수정</h1>
-      <EditProfileImage />
+    <St.StContainer>
+      <St.StProfileH1>프로필 수정</St.StProfileH1>
       <></>
       <EditNickNameAndIntroForm />
-    </div>
+    </St.StContainer>
   )
 }
 
