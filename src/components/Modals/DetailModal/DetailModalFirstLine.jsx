@@ -18,7 +18,7 @@ const DetailModalFirstLine = () => {
         </figure>
         <div>
           <S.StDetailModalDate>{formatDate}</S.StDetailModalDate>
-          <S.StDeatilModalUserName>{selectData.user}</S.StDeatilModalUserName>
+          <S.StDetailModalUserName>{selectData.user}</S.StDetailModalUserName>
         </div>
       </S.StFirstLineUserInfo>
     </S.StFirstDiv>

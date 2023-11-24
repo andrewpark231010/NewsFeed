@@ -18,8 +18,11 @@ export const StDiv = styled.div`
 `
 export const CloseButton = styled.button`
   position: absolute;
-  right: 5rem;
-  top: 3rem;
+  right: 2rem;
+  top: 2rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: transparent;
   cursor: pointer;
   &::before {
     content: '';
@@ -27,7 +30,7 @@ export const CloseButton = styled.button`
     display: inline-block;
     width: 3rem;
     height: 0.5rem;
-    transform: rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
     border: 1px solid white;
     border-radius: 2px;
     transition: 0.5s;
@@ -38,7 +41,7 @@ export const CloseButton = styled.button`
     display: inline-block;
     width: 3rem;
     height: 0.5rem;
-    transform: rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
     border: 1px solid white;
     border-radius: 2px;
     transition: 0.5s;
@@ -46,11 +49,11 @@ export const CloseButton = styled.button`
   &:hover,
   &:active {
     &::after {
-      transform: rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
       background-color: white;
     }
     &::before {
-      transform: rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg);
       background-color: white;
     }
   }
@@ -62,7 +65,7 @@ export const StFirstDiv = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
-  padding-left: 4rem;
+  padding: 0 4rem;
   color: white;
   align-items: start;
   width: 100%;
@@ -93,7 +96,7 @@ export const StDetailModalDate = styled.span`
   font-size: 2rem;
   margin-bottom: 0.5rem;
 `
-export const StDeatilModalUserName = styled.h2`
+export const StDetailModalUserName = styled.h2`
   font-size: 3rem;
 `
 export const StSecondLineContent = styled.p`
