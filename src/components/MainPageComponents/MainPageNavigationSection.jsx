@@ -3,10 +3,15 @@ import * as S from './MainPageComponents.styled'
 import MainPageNavSortArea from './MainPageNavSortArea'
 import { CATEGORY_LIST } from '../../commonData'
 
-const MainPageNavigationSection = () => {
+const MainPageNavigationSection = ({
+  setSelect,
+  select,
+  setSortMode,
+  sortMode,
+}) => {
   return (
     <S.MainNavSectionDiv>
-      <select>
+      <select value={select} onChange={setSelect}>
         <option value={0}>전체 게임</option>
         {CATEGORY_LIST.map((list) => (
           <option key={list.id} value={list.id}>
@@ -14,7 +19,7 @@ const MainPageNavigationSection = () => {
           </option>
         ))}
       </select>
-      <MainPageNavSortArea />
+      <MainPageNavSortArea setSortMode={setSortMode} sortMode={sortMode} />
     </S.MainNavSectionDiv>
   )
 }

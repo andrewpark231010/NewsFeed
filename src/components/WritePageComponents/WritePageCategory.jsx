@@ -2,7 +2,6 @@ import React from 'react'
 import { CATEGORY_LIST } from '../../commonData'
 import * as S from './WritePageComponents.styled'
 import { ReactComponent as MyProfileUploadImg } from '../../styles/images/WritePageImage/MyProfileUploadImg.svg'
-import { ReactComponent as Check } from '../../styles/images/WritePageImage/check.svg'
 
 const WritePageCategory = ({
   setCategory,

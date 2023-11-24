@@ -19,7 +19,7 @@ import { CATEGORY_LIST } from '../../commonData'
 
 const WritePageSubmit = () => {
   const [useCustomImg, setUseCustomImg] = useState(true)
-  const [category, setCategory] = useState(1)
+  const [category, setCategory] = useState('1')
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [image, setImage] = useState('')
