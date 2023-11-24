@@ -7,10 +7,18 @@ import {
   CompleteBtn,
 } from './WritePageComponents.styled'
 import WritePageCategory from './WritePageCategory'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { db, pathReference } from '../../API/Firebase/Firebase'
-import { doc, setDoc } from 'firebase/firestore'
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+} from 'firebase/firestore'
+import { setPostData } from '../../redux/modules/postData'
 
 const WritePageSubmit = () => {
   // 상태 변수들
@@ -23,6 +31,7 @@ const WritePageSubmit = () => {
   useEffect(() => {
     console.log(image)
   }, [image])
+  const dispatch = useDispatch()
 
   // 제목 입력 핸들러
   const titleChangeHandler = (e) => {
@@ -41,12 +50,15 @@ const WritePageSubmit = () => {
       return
     }
 
-    const userImageRouteRef = ref(pathReference, `userImage/${image[0].name}`)
+    const userImageRouteRef = ref(
+      pathReference,
+      `postImage/${image[0].name.replace(/[()]/g, '')}`
+    )
 
     const uploadNewPostHandler = async () => {
+      const q = query(collection(db, 'post'), orderBy('date', 'desc'))
       await uploadBytes(userImageRouteRef, image[0])
       const url = await getDownloadURL(userImageRouteRef)
-
       const postId = uuidv4()
       const newPost = {
         category,
@@ -60,7 +72,12 @@ const WritePageSubmit = () => {
         date: new Date(),
       }
       await setDoc(doc(db, 'post', postId), newPost)
+      const querySnapshot = await getDocs(q)
+      let postData = []
+      querySnapshot.forEach((item) => postData.push(item.data()))
+      dispatch(setPostData(postData))
     }
+
     uploadNewPostHandler()
     // 입력 폼 초기화
     setTitle('')

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const StDiv = styled.div`
+  position: relative;
   min-width: 35rem;
   max-width: 77rem;
   width: 80%;
@@ -15,7 +16,45 @@ export const StDiv = styled.div`
   display: flex;
   flex-direction: column;
 `
-
+export const CloseButton = styled.button`
+  position: absolute;
+  right: 5rem;
+  top: 3rem;
+  cursor: pointer;
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 3rem;
+    height: 0.5rem;
+    transform: rotate(45deg);
+    border: 1px solid white;
+    border-radius: 2px;
+    transition: 0.5s;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 3rem;
+    height: 0.5rem;
+    transform: rotate(-45deg);
+    border: 1px solid white;
+    border-radius: 2px;
+    transition: 0.5s;
+  }
+  &:hover,
+  &:active {
+    &::after {
+      transform: rotate(45deg);
+      background-color: white;
+    }
+    &::before {
+      transform: rotate(-45deg);
+      background-color: white;
+    }
+  }
+`
 export const StFirstDiv = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${(props) => props.$backgroundImage});
@@ -63,4 +102,15 @@ export const StSecondLineContent = styled.p`
   height: 30rem;
   border-radius: 0 0 20px 20px;
   background-color: #fff;
+  overflow-y: scroll;
+  white-space: pre-line;
+  line-height: 4rem;
+  letter-spacing: 0.1rem;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: black;
+    border-radius: 10px;
+  }
 `

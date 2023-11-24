@@ -12,6 +12,7 @@ export const StCardLi = styled.li`
   border-radius: 10px;
   padding: 1.5rem;
   color: #fff;
+  cursor: pointer;
   & h2 {
     font-size: 2.8rem;
     font-weight: bold;
@@ -25,6 +26,7 @@ export const StCardLiFirstLine = styled.div`
   display: flex;
   & img {
     width: 4.3rem;
+    height: 4.3rem;
     border-radius: 50%;
   }
 `

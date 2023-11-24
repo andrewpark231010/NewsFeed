@@ -21,9 +21,12 @@ export const MainNavSectionDiv = styled.div`
 
 export const MainCardListUl = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
   grid-gap: 2rem 0;
   justify-items: center;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(25%, auto));
+  }
   @media (max-width: 1000px) {
     grid-template-columns: repeat(auto-fill, minmax(50%, auto));
   }
