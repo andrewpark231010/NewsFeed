@@ -1,30 +1,65 @@
 import React from 'react'
+import { CATEGORY_LIST } from '../../commonData'
+import * as S from './WritePageComponents.styled'
+import { ReactComponent as MyProfileUploadImg } from '../../styles/images/WritePageImage/MyProfileUploadImg.svg'
+import { ReactComponent as Check } from '../../styles/images/WritePageImage/check.svg'
 
-import { WPCategoryDiv } from './WritePageComponents.styled'
-
-const WritePageCategory = ({ setCategory, category, image, setImage }) => {
+const WritePageCategory = ({
+  setCategory,
+  category,
+  image,
+  setImage,
+  useCustomImg,
+  setUseCustomImg,
+}) => {
   const changeCategoryHandler = (e) => {
     setCategory(e.target.value)
   }
   const changeImageHandler = (e) => {
     setImage(e.target.files)
   }
-
+  const localImageUseHandler = (e) => {
+    setUseCustomImg(e.target.checked)
+    if (e.target.checked) setImage([])
+  }
   return (
-    <WPCategoryDiv>
-      <label htmlFor="uploadFile"></label>
-      <input
-        id="uploadFile"
-        type="file"
-        onChange={changeImageHandler}
-        files={image}
-      />
+    <S.WPCategoryDiv>
+      <S.WPCustomImgUseCheckBox>
+        <input
+          type="checkbox"
+          id="customImgCheckBox"
+          checked={useCustomImg}
+          onChange={localImageUseHandler}
+        />
+        <label htmlFor="customImgCheckBox">기본이미지 사용하기</label>
+      </S.WPCustomImgUseCheckBox>
+
+      {!useCustomImg && (
+        <S.WPCategoryFileInput>
+          <label htmlFor="uploadFile">
+            <MyProfileUploadImg />
+          </label>
+          <span>
+            {image.length !== 0 ? image[0].name : '파일을 선택하세요'}
+          </span>
+          <input
+            id="uploadFile"
+            type="file"
+            onChange={changeImageHandler}
+            files={image}
+            accept="image/gif,image/jpeg,image/png"
+          />
+        </S.WPCategoryFileInput>
+      )}
+
       <select onChange={changeCategoryHandler} value={category}>
-        <option value="lol">리그오브레전드</option>
-        <option value="Maple">메이플스토리</option>
-        <option value="val">발로란트</option>
+        {CATEGORY_LIST.map((list) => (
+          <option key={list.id} value={list.id}>
+            {list.text}
+          </option>
+        ))}
       </select>
-    </WPCategoryDiv>
+    </S.WPCategoryDiv>
   )
 }
 

@@ -1,0 +1,16 @@
+export const CATEGORY_LIST = [
+  { id: 1, text: '리그오브레전드', imgName: 'lol.jpg' },
+  { id: 2, text: '배틀그라운드', imgName: 'bg.jpg' },
+  { id: 3, text: 'FC 온라인', imgName: 'fc.jpg' },
+  { id: 4, text: '발로란트', imgName: 'val.jpg' },
+  { id: 5, text: '서든어택', imgName: 'sudden.jpg' },
+  { id: 6, text: '로스트아크', imgName: 'lost.jpg' },
+  { id: 7, text: '오버워치2', imgName: 'over.jpg' },
+  { id: 8, text: '메이플스토리', imgName: 'maple.jpg' },
+  { id: 9, text: '스타크래프트', imgName: 'star.jpg' },
+  { id: 10, text: '던전앤파이터', imgName: 'dnp.jpg' },
+  { id: 11, text: '리니지', imgName: 'lin.jpg' },
+  { id: 12, text: '스팀게임', imgName: 'steam.jpg' },
+  { id: 13, text: '닌텐도게임', imgName: 'nin.jpg' },
+  { id: 14, text: '기타', imgName: 'logo.jpg' },
+]

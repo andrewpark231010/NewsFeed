@@ -123,6 +123,7 @@ export const StHeaderButtonArea = styled.div`
     border-bottom: ${(props) => (props.$isToggled ? '2px' : '0')} solid black;
     overflow: hidden;
     transition: 0.5s;
+    z-index: 1;
   }
 `
 export const StHeaderButton = styled.button`
