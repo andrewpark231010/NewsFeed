@@ -16,10 +16,14 @@ export const StDiv = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const CloseButton = styled.button`
+export const detailModalBtnContainer = styled.div`
   position: absolute;
   right: 2rem;
   top: 2rem;
+  display: flex;
+  align-items: center;
+`
+export const CloseButton = styled.button`
   width: 4.5rem;
   height: 4.5rem;
   background-color: transparent;
@@ -31,7 +35,7 @@ export const CloseButton = styled.button`
     width: 3rem;
     height: 0.5rem;
     transform: translate(-50%, -50%) rotate(45deg);
-    border: 1px solid white;
+    border: 1.5px solid white;
     border-radius: 2px;
     transition: 0.5s;
   }
@@ -42,7 +46,7 @@ export const CloseButton = styled.button`
     width: 3rem;
     height: 0.5rem;
     transform: translate(-50%, -50%) rotate(-45deg);
-    border: 1px solid white;
+    border: 1.5px solid white;
     border-radius: 2px;
     transition: 0.5s;
   }
@@ -58,6 +62,23 @@ export const CloseButton = styled.button`
     }
   }
 `
+
+export const DeleteButton = styled.button`
+  width: 4.5rem;
+  height: 4.5rem;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+`
+
+export const EditButton = styled.button`
+  width: 4.5rem;
+  height: 4.5rem;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+`
+
 export const StFirstDiv = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${(props) => props.$backgroundImage});

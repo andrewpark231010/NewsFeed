@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import CardComponents from '../CommonComponents/CardComponents/CardComponents'
 import * as S from './MainPageComponents.styled'
 import { useSelector } from 'react-redux'
 
 const MainPageCardList = ({ select, sortMode, setSelect }) => {
   const dataList = useSelector((state) => state.postData.postData)
+
   let filterDataList = []
   const inputValue = useSelector((state) => state.postData.searchValue)
+
   if (inputValue) {
     setSelect('0')
     filterDataList = dataList.filter(
@@ -22,10 +24,11 @@ const MainPageCardList = ({ select, sortMode, setSelect }) => {
   }
 
   if (sortMode) {
-    dataList.sort((a, b) => a['date'] - b['date'])
+    filterDataList.sort((a, b) => a['date'] - b['date'])
   } else {
-    dataList.sort((a, b) => b['date'] - a['date'])
+    filterDataList.sort((a, b) => b['date'] - a['date'])
   }
+
   return (
     <S.MainCardListUl>
       {filterDataList.map((item) => (

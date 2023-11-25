@@ -29,6 +29,7 @@ export const StCardLiFirstLine = styled.div`
     width: 4.3rem;
     height: 4.3rem;
     border-radius: 50%;
+    object-fit: cover;
   }
 `
 export const StCardLiFirstLineText = styled.div`

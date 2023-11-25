@@ -33,6 +33,9 @@ const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 62.5%;
+        &::-webkit-scrollbar{
+            width: 0;
+        }
     }
     body {
         line-height: 1;

@@ -3,6 +3,7 @@ import * as St from './MyPageComponents.styled'
 import { useSelector } from 'react-redux'
 import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal'
 import CardComponents from '../CommonComponents/CardComponents/CardComponents'
+import { useEffect } from 'react'
 
 function MyPageComponentFrame() {
   const modalToggle = useSelector((state) => state.modalToggle.editToggled)
@@ -10,6 +11,7 @@ function MyPageComponentFrame() {
   const userData = useSelector((state) => state.postData.postData).filter(
     (post) => post.uid === userInfo.uid
   )
+  userData.sort((a, b) => b['date'] - a['date'])
 
   return (
     <div>
