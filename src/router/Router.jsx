@@ -13,9 +13,9 @@ const Router = () => {
   const currentThemeMode = useSelector((state) => state.themeMode.mode)
   return (
     <BrowserRouter>
-      <GlobalStyle />
       <GlobalFont />
       <ThemeProvider theme={theme[currentThemeMode]}>
+        <GlobalStyle />
         <Layout>
           <PageWrapper>
             <Routes>

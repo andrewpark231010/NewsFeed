@@ -13,6 +13,10 @@ export const StHeaderTitle = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  & img {
+    content: url(${(props) => props.theme.logoImage});
+    height: 8rem;
+  }
   @media (max-width: 1000px) {
     zoom: 0.8;
   }

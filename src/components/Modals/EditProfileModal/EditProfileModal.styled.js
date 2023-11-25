@@ -6,7 +6,7 @@ export const StContainer = styled.div`
   top: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: ${(props) => props.theme.modalBackground};
   z-index: 30;
   padding: 3.5rem 6rem;
 `
@@ -62,6 +62,7 @@ export const StInputDiv = styled.div`
     outline: none;
     margin-bottom: 2rem;
     padding-left: 2rem;
+    background-color: ${(props) => props.theme.inputColor};
   }
 
   & textarea {
@@ -72,6 +73,7 @@ export const StInputDiv = styled.div`
     resize: none;
     border: 1px solid #6d6d6d;
     outline: none;
+    background-color: ${(props) => props.theme.inputColor};
   }
 `
 export const StcompBtn = styled.button`

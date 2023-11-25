@@ -104,7 +104,7 @@ export const StSecondLineContent = styled.p`
   font-size: 2.5rem;
   height: 30rem;
   border-radius: 0 0 20px 20px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.modalBackground};
   overflow-y: scroll;
   white-space: pre-line;
   line-height: 4rem;

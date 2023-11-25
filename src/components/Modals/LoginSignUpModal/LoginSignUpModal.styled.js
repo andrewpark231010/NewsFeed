@@ -5,7 +5,7 @@ export const StDiv = styled.div`
   max-width: 77rem;
   width: 80%;
   height: auto;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.modalBackground};
   z-index: 20;
   position: fixed;
   left: 50%;
@@ -24,7 +24,7 @@ export const StModalForm = styled.form`
   margin: 8.5rem 0 5rem 0;
   width: 90%;
   height: auto;
-  border: #888888 3px solid;
+  border: ${(props) => props.theme.loginFormColor} 3px solid;
   position: relative;
 
   & > input {
@@ -37,7 +37,7 @@ export const StModalForm = styled.form`
     padding: 0 5em 0 0.5em;
   }
   & > input:first-child {
-    border-bottom: #888888 3px solid;
+    border-bottom: ${(props) => props.theme.loginFormColor} 3px solid;
   }
   & > button {
     position: absolute;

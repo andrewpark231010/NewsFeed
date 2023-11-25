@@ -48,16 +48,22 @@ export const NickNameAndBtnWrapper = styled.div`
 export const MyProfileNickName = styled.h2`
   font-size: 3rem;
   font-weight: bold;
+  color: ${(props) => props.theme.mainColor};
 `
 
 export const MyEditBtn = styled.button`
-  background-image: url(${editIcon});
+  color: ${(props) => props.theme.mainColor};
+
+  /* background-image: url(${editIcon});
   background-size: cover;
   width: 2.5rem;
-  height: 2.5rem;
+  height: 2.5rem; */
   margin-top: 0.5rem;
   margin-left: 0.9rem;
-  object-fit: cover;
+  background: none;
+  & svg {
+    color: inherit;
+  }
   cursor: pointer;
 `
 export const MyEmail = styled.span`
@@ -72,6 +78,7 @@ export const Intro = styled.p`
   overflow-y: scroll;
   max-height: 15rem;
   white-space: pre-line;
+  color: ${(props) => props.theme.mainColor};
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -96,7 +103,8 @@ export const MyPost = styled.span`
   left: 4rem;
   top: 2rem;
   font-size: 2.5rem;
-  text-decoration: black solid underline 3px;
+  color: ${(props) => props.theme.mainColor};
+  text-decoration: ${(props) => props.theme.mainColor} solid underline 3px;
   text-underline-position: under;
   font-weight: bold;
   & span {

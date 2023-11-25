@@ -10,6 +10,7 @@ export const StCardLi = styled.li`
   background-position: center;
   background-size: cover;
   border-radius: 10px;
+  border: ${(props) => props.theme.cardBorder};
   padding: 1.5rem;
   color: #fff;
   cursor: pointer;

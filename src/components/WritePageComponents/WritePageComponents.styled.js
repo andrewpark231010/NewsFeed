@@ -12,6 +12,9 @@ export const WPCategoryDiv = styled.div`
     height: 3rem;
     font-size: 2rem;
     cursor: pointer;
+    color: ${(props) => props.theme.mainColor};
+    border: 2px solid ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.mainBackgroundColor};
   }
   @media (max-width: 500px) {
     & > select {
@@ -23,6 +26,7 @@ export const WPCategoryDiv = styled.div`
   }
 `
 export const WPCustomImgUseCheckBox = styled.div`
+  color: ${(props) => props.theme.mainColor};
   font-size: 2rem;
   position: absolute;
   top: -3rem;
@@ -33,13 +37,12 @@ export const WPCustomImgUseCheckBox = styled.div`
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 3px;
-    border: 2px solid gray;
+    border: 2px solid ${(props) => props.theme.mainColor};
   }
   & input:checked {
-    background: url(${check}) black;
+    background: ${(props) => props.theme.mainColor};
     background-position: center;
     background-size: cover;
-    border-color: #1c1c1c;
   }
 
   @media (max-width: 500px) {
@@ -78,6 +81,8 @@ export const WPcontainerForm = styled.form`
 `
 
 export const WPtitle = styled.input`
+  background-color: transparent;
+  color: ${(props) => props.theme.mainColor};
   font-size: 5rem;
   border: none;
   border-bottom: 1px solid #7d7d7d;
@@ -89,7 +94,9 @@ export const WPtitle = styled.input`
   }
 `
 export const WPtextarea = styled.textarea`
+  background-color: transparent;
   font-size: 4rem;
+  color: ${(props) => props.theme.mainColor};
   border: none;
   outline: none;
   resize: none;
@@ -107,4 +114,5 @@ export const CompleteBtn = styled.button`
   align-self: end;
   background: #1c1c1c;
   color: white;
+  border: ${(props) => props.theme.cardBorder};
 `
