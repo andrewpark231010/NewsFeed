@@ -7,7 +7,6 @@ import { doc, updateDoc } from 'firebase/firestore'
 import { pathReference } from '../../../API/Firebase/Firebase'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { updateProfile } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
 import { editModalToggle } from '../../../redux/modules/modalToggle'
 import { upDateUserInfo } from '../../../redux/modules/user'
 
@@ -17,7 +16,6 @@ function EditNickNameAndIntroForm() {
   const [nickName, setNickName] = useState(userData.displayName)
   const [intro, setIntro] = useState(userData.introduce)
 
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const imgSelectHandler = (event) => {
     setImg(event.target.files[0])
@@ -76,7 +74,12 @@ function EditNickNameAndIntroForm() {
       <St.StProfileImgH2>프로필 이미지</St.StProfileImgH2>
       <St.StImgBox>
         <St.StLabel $img={MyProfileUploadImg} htmlFor="img"></St.StLabel>
-        <St.StImgInput onChange={imgSelectHandler} type="file" id="img" />
+        <St.StImgInput
+          onChange={imgSelectHandler}
+          type="file"
+          id="img"
+          accept="image/gif,image/jpeg,image/png"
+        />
         <St.StImgSpan>{img ? img.name : '파일을 선택하세요'}</St.StImgSpan>
       </St.StImgBox>
 

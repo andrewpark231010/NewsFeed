@@ -3,7 +3,6 @@ import * as St from './MyPageComponents.styled'
 import { useSelector } from 'react-redux'
 import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal'
 import CardComponents from '../CommonComponents/CardComponents/CardComponents'
-import { useEffect } from 'react'
 
 function MyPageComponentFrame() {
   const modalToggle = useSelector((state) => state.modalToggle.editToggled)
