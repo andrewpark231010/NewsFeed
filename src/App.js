@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Router from './router/Router'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db, getMemberRef } from './API/Firebase/Firebase'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getUserInfo } from './redux/modules/user'
 import LoadingProgress from './components/CommonComponents/LoadingProgress'
 import {
@@ -14,10 +14,13 @@ import {
   setDoc,
 } from 'firebase/firestore'
 import { setPostData } from './redux/modules/postData'
+import GlobalStyle from './styles/GlobalStyle'
+import { GlobalFont } from './styles/fonts'
+import { ThemeProvider } from 'styled-components'
+import theme from './styles/theme'
 
 function App() {
   const dispatch = useDispatch()
-  const [isLoading, setIsLoading] = useState(false)
 
   const getPostData = async () => {
     const q = query(collection(db, 'post'), orderBy('date', 'desc'))
@@ -28,7 +31,6 @@ function App() {
   }
 
   useEffect(() => {
-    setIsLoading(true)
     getPostData()
     onAuthStateChanged(auth, (user) => {
       console.log(user)
@@ -45,12 +47,15 @@ function App() {
       }
       user && getIntroduce()
     })
-    setIsLoading(false)
   }, [])
+  const currentThemeMode = useSelector((state) => state.themeMode.mode)
   return (
     <>
-      <LoadingProgress loading={isLoading} />
-      <Router />
+      <ThemeProvider theme={theme[currentThemeMode]}>
+        <GlobalStyle />
+        <GlobalFont />
+        <Router />
+      </ThemeProvider>
     </>
   )
 }
