@@ -27,9 +27,10 @@ function App() {
     querySnapshot.forEach((item) => postData.push(item.data()))
     dispatch(setPostData(postData))
   }
-  localStorage.getItem('themeMode') === null
-    ? localStorage.setItem('themeMode', 'light')
-    : ''
+
+  if (localStorage.getItem('themeMode') === null)
+    localStorage.setItem('themeMode', 'light')
+
   useEffect(() => {
     getPostData()
     onAuthStateChanged(auth, (user) => {
