@@ -37,25 +37,30 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       const getIntroduce = async () => {
         const data = await getDoc(getMemberRef(user.uid))
-
         if (data.data()) {
           dispatch(getUserInfo({ ...user, introduce: data.data().introduce }))
         } else {
           await setDoc(getMemberRef(user.uid), {
             introduce: '',
           })
-          if (!user.displayName && !user.photoURL) {
+          console.log(user.photoURL, user.displayName)
+          if (!user.displayName || !user.photoURL) {
             const fileName = 'defaultUser.webp'
             const url = await getDownloadURL(ref(pathReference, fileName))
-            updateProfile(auth.currentUser, {
+            await updateProfile(auth.currentUser, {
               displayName: user.email.split('@')[0],
               photoURL: url,
             })
-            dispatch(getUserInfo({ ...auth.currentUser, introduce: '' }))
           }
+          dispatch(
+            getUserInfo({
+              ...JSON.parse(JSON.stringify(auth.currentUser)),
+              introduce: '',
+            })
+          )
         }
       }
-      user && getIntroduce()
+      if (user) getIntroduce()
     })
   }, [])
   const currentThemeMode = useSelector((state) => state.themeMode.mode)

@@ -45,8 +45,8 @@ const LoginSignUpModalSocialArea = () => {
         dispatch(loginSignUpModalToggle())
       } catch (err) {
         console.error(err)
-        const credential = GithubAuthProvider.credentialFromError(err)
-        console.log(`<<깃허브로그인 오류>> ${credential}`, credential)
+        // const credential = GithubAuthProvider.credentialFromError(err)
+        // console.log(`<<깃허브로그인 오류>> ${credential}`, credential)
       }
     }
     loginUserGithubAuthHandler()
