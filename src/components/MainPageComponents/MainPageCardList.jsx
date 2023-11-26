@@ -31,7 +31,7 @@ const MainPageCardList = ({ select, sortMode, setSelect }) => {
 
   return (
     <>
-      {filterDataList === 0 && (
+      {filterDataList.length === 0 && (
         <S.MainCardListNoListMessage>
           <span>등록된 내용이 없습니다.</span>
         </S.MainCardListNoListMessage>

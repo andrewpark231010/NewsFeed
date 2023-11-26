@@ -3,9 +3,10 @@ import * as S from './Header.styled'
 import { titleLogo } from '../../../styles/images'
 import { useNavigate } from 'react-router-dom'
 
-const HeaderTitle = () => {
+const HeaderTitle = ({ setMenuToggled, menuToggled }) => {
   const navigate = useNavigate()
   const goToMainPageHandler = () => {
+    if (menuToggled) setMenuToggled(false)
     navigate('/')
   }
   return (

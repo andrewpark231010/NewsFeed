@@ -8,15 +8,17 @@ const darkTheme = {
   modalBackground: '#c5c5c9',
   inputColor: '#E0E0E0',
   loginFormColor: '#000',
+  btnToggleAreaBackground: '#8a8a8f',
 }
 const lightTheme = {
   mainColor: '#292929',
   mainBackgroundColor: '#fff',
-  cardBorder: 'none',
+  cardBorder: '2px solid transparent',
   logoImage: lightTitleLogo,
   modalBackground: '#fff',
   inputColor: 'transparent',
   loginFormColor: '#888888',
+  btnToggleAreaBackground: '#fff',
 }
 
 export default { dark: darkTheme, light: lightTheme }

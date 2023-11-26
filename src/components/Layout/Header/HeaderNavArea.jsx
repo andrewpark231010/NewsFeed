@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import * as S from './Header.styled'
 import HeaderButton from './HeaderButton'
 import HeaderSearchForm from './HeaderSearchForm'
-import { menu } from '../../../styles/images'
+import { ReactComponent as MenuButton } from '../../../styles/images/HeaderImage/menu.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleTheme } from '../../../redux/modules/themeMode'
 import LoginSignUpModal from '../../Modals/LoginSignUpModal/LoginSignUpModal'
@@ -14,7 +14,7 @@ import {
 import { loginOutUserHandler } from '../../../API/Firebase/Firebase'
 import { deleteUserInfo } from '../../../redux/modules/user'
 
-const HeaderNavArea = () => {
+const HeaderNavArea = ({ setMenuToggled, menuToggled }) => {
   const dispatch = useDispatch()
   const currentThemeMode = useSelector((state) => state.themeMode.iconImage)
   const loginSignUpIsToggled = useSelector(
@@ -22,9 +22,6 @@ const HeaderNavArea = () => {
   )
   const userInfo = useSelector((state) => state.user.currentUserInfo)
   const navigate = useNavigate()
-
-  // state : 메뉴 토글, 로그인 모달
-  const [MenuToggled, setMenuToggled] = useState(false)
 
   const navToggleHandler = () => {
     setMenuToggled((prev) => (prev ? false : true))
@@ -77,13 +74,14 @@ const HeaderNavArea = () => {
           </figure>
         </S.StHeaderModeChangeButton>
         <S.StHeaderMobileToggleButton onClick={navToggleHandler}>
-          <figure>
-            <img src={menu} />
-          </figure>
+          <MenuButton />
         </S.StHeaderMobileToggleButton>
 
-        <S.StHeaderButtonArea $isToggled={MenuToggled}>
-          <HeaderSearchForm setMenuToggled={setMenuToggled} />
+        <S.StHeaderButtonArea $isToggled={menuToggled}>
+          <HeaderSearchForm
+            setMenuToggled={setMenuToggled}
+            menuToggled={menuToggled}
+          />
           {HEADER_BUTTON.filter(
             (button) => button.loginVisible === !!userInfo.email
           ).map((button) => (

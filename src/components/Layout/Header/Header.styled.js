@@ -64,12 +64,15 @@ export const StHeaderForm = styled.form`
   }
   & > button {
     position: absolute;
-    right: 1rem;
+    right: 5rem;
     top: 0;
     bottom: 0;
     background: none;
     border: none;
     cursor: pointer;
+  }
+  & > button:last-child {
+    right: 1rem;
   }
   @media (max-width: 1000px) {
     position: relative;
@@ -93,6 +96,10 @@ export const StHeaderMobileToggleButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  & svg {
+    color: ${(props) => props.theme.mainColor};
+    transition: 0.5s;
+  }
   @media (max-width: 1000px) {
     display: block;
   }
@@ -112,8 +119,10 @@ export const StHeaderButtonArea = styled.div`
   align-items: center;
   justify-content: flex-end;
   margin-right: 3rem;
-
+  background: transparent;
+  transition: 0.5s;
   @media (max-width: 1000px) {
+    background: ${(props) => props.theme.btnToggleAreaBackground};
     position: absolute;
     flex-direction: column;
     justify-content: center;
@@ -124,10 +133,8 @@ export const StHeaderButtonArea = styled.div`
     height: ${(props) => (props.$isToggled ? '20rem' : '0')};
     margin-right: unset;
     padding: ${(props) => (props.$isToggled ? '2rem 0' : '0')};
-    background-color: white;
     border-bottom: ${(props) => (props.$isToggled ? '2px' : '0')} solid black;
     overflow: hidden;
-    transition: 0.5s;
     z-index: 1;
   }
 `

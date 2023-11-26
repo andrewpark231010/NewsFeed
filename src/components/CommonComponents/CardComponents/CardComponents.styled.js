@@ -10,6 +10,7 @@ export const StCardLi = styled.li`
   background-position: center;
   background-size: cover;
   border-radius: 10px;
+  transition: 0.5s;
   border: ${(props) => props.theme.cardBorder};
   padding: 1.5rem;
   color: #fff;
@@ -50,6 +51,9 @@ export const StContentContainerDiv = styled.div`
   height: 18rem;
   overflow: hidden;
   line-height: 2rem;
+  & > p {
+    word-wrap: break-word;
+  }
 
   &::after {
     content: '';

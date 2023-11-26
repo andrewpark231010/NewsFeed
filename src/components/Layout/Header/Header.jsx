@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './Header.styled'
 import HeaderTitle from './HeaderTitle'
 import HeaderNavArea from './HeaderNavArea'
@@ -9,12 +9,19 @@ const Header = () => {
   const isDetailModalToggled = useSelector(
     (state) => state.modalToggle.detailToggled
   )
+  const [menuToggled, setMenuToggled] = useState(false)
   return (
     <>
       {isDetailModalToggled && <DetailModal />}
       <S.StHeader>
-        <HeaderTitle />
-        <HeaderNavArea />
+        <HeaderTitle
+          menuToggled={menuToggled}
+          setMenuToggled={setMenuToggled}
+        />
+        <HeaderNavArea
+          setMenuToggled={setMenuToggled}
+          menuToggled={menuToggled}
+        />
       </S.StHeader>
     </>
   )

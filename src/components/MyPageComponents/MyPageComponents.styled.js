@@ -57,6 +57,7 @@ export const MyProfileNickName = styled.h2`
   font-size: 3rem;
   font-weight: bold;
   color: ${(props) => props.theme.mainColor};
+  transition: 0.5s;
 `
 
 export const MyEditBtn = styled.button`
@@ -64,6 +65,7 @@ export const MyEditBtn = styled.button`
   margin-top: 0.5rem;
   margin-left: 0.9rem;
   background: none;
+  transition: 0.5s;
   & svg {
     color: inherit;
   }
@@ -81,6 +83,7 @@ export const Intro = styled.p`
   overflow-y: scroll;
   max-height: 15rem;
   white-space: pre-line;
+  transition: 0.5s;
   color: ${(props) => props.theme.mainColor};
   &::-webkit-scrollbar {
     width: 10px;
@@ -106,10 +109,12 @@ export const MyPost = styled.span`
   left: 4rem;
   top: 2rem;
   font-size: 2.5rem;
+  transition: 0.5s;
   color: ${(props) => props.theme.mainColor};
   text-decoration: ${(props) => props.theme.mainColor} solid underline 3px;
   text-underline-position: under;
   font-weight: bold;
+  white-space: nowrap;
   & span {
     font-weight: normal;
   }
