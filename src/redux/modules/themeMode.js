@@ -1,5 +1,3 @@
-import { dark, light } from '../../styles/images'
-
 const TOGGLE_THEME = 'TOGGLE_THEME'
 
 export const toggleTheme = () => {
@@ -9,20 +7,22 @@ export const toggleTheme = () => {
 }
 
 const initState = {
-  mode: localStorage.getItem('themeMode'),
-  iconImage: localStorage.getItem('themeMode') === 'light' ? light : dark,
+  mode: localStorage.getItem('themeMode')
+    ? localStorage.getItem('themeMode')
+    : 'light',
 }
 
-const themeMode = (state = initState, { type }) => {
+const themeMode = (state = initState, { type, payload }) => {
   switch (type) {
     case TOGGLE_THEME:
       if (state.mode === 'light') {
         localStorage.setItem('themeMode', 'dark')
-        return { ...state, mode: 'dark', iconImage: dark }
+        return { ...state, mode: 'dark' }
       } else {
         localStorage.setItem('themeMode', 'light')
-        return { ...state, mode: 'light', iconImage: light }
+        return { ...state, mode: 'light' }
       }
+
     default:
       return state
   }

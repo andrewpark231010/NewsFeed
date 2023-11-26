@@ -13,10 +13,12 @@ import {
 } from '../../../redux/modules/modalToggle'
 import { loginOutUserHandler } from '../../../API/Firebase/Firebase'
 import { deleteUserInfo } from '../../../redux/modules/user'
+import { ReactComponent as Dark } from '../../../styles/images/HeaderImage/dark.svg'
+import { ReactComponent as Light } from '../../../styles/images/HeaderImage/light.svg'
 
 const HeaderNavArea = ({ setMenuToggled, menuToggled }) => {
   const dispatch = useDispatch()
-  const currentThemeMode = useSelector((state) => state.themeMode.iconImage)
+  const currentThemeMode = useSelector((state) => state.themeMode.mode)
   const loginSignUpIsToggled = useSelector(
     (state) => state.modalToggle.loginSignUpToggled
   )
@@ -69,9 +71,7 @@ const HeaderNavArea = ({ setMenuToggled, menuToggled }) => {
       {/* Nav 구성요소 */}
       <S.StHeaderNavArea>
         <S.StHeaderModeChangeButton onClick={themeChangeHandler}>
-          <figure>
-            <img src={currentThemeMode} />
-          </figure>
+          {currentThemeMode === 'dark' ? <Dark /> : <Light />}
         </S.StHeaderModeChangeButton>
         <S.StHeaderMobileToggleButton onClick={navToggleHandler}>
           <MenuButton />
