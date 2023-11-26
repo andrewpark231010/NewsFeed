@@ -23,9 +23,6 @@ const themeMode = (state = initState, { type }) => {
         localStorage.setItem('themeMode', 'light')
         return { ...state, mode: 'light', iconImage: light }
       }
-    // return state.mode === 'light'
-    //   ? { ...state, mode: 'dark', iconImage: dark }
-    //   : { ...state, mode: 'light', iconImage: light }
     default:
       return state
   }
