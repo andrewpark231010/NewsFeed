@@ -30,11 +30,18 @@ const MainPageCardList = ({ select, sortMode, setSelect }) => {
   }
 
   return (
-    <S.MainCardListUl>
-      {filterDataList.map((item) => (
-        <CardComponents key={item.id} data={item} />
-      ))}
-    </S.MainCardListUl>
+    <>
+      {filterDataList === 0 && (
+        <S.MainCardListNoListMessage>
+          <span>등록된 내용이 없습니다.</span>
+        </S.MainCardListNoListMessage>
+      )}
+      <S.MainCardListUl>
+        {filterDataList.map((item) => (
+          <CardComponents key={item.id} data={item} />
+        ))}
+      </S.MainCardListUl>
+    </>
   )
 }
 

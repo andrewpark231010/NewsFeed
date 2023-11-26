@@ -7,7 +7,10 @@ import { menu } from '../../../styles/images'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleTheme } from '../../../redux/modules/themeMode'
 import LoginSignUpModal from '../../Modals/LoginSignUpModal/LoginSignUpModal'
-import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
+import {
+  loginSignUpModalToggle,
+  setDetailModalData,
+} from '../../../redux/modules/modalToggle'
 import { loginOutUserHandler } from '../../../API/Firebase/Firebase'
 import { deleteUserInfo } from '../../../redux/modules/user'
 
@@ -32,7 +35,8 @@ const HeaderNavArea = () => {
   }
   const goToWriteHandler = () => {
     setMenuToggled((prev) => (prev ? false : true))
-    navigate('/write')
+    dispatch(setDetailModalData({}))
+    navigate('/write/newPost')
   }
   const openLoginSignInModalHandler = () => {
     dispatch(loginSignUpModalToggle())

@@ -52,3 +52,11 @@ export const MainNavSortItem = styled.span`
     margin-right: 1rem;
   }
 `
+
+export const MainCardListNoListMessage = styled.div`
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 10rem;
+  font-weight: bold;
+  color: ${(props) => props.theme.mainColor};
+`

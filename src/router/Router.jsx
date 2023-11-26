@@ -21,7 +21,7 @@ const Router = () => {
             <Routes>
               <Route path="/" element={<MainPage />} />
               <Route path="/my" element={<MyPage />} />
-              <Route path="/write" element={<WritePage />} />
+              <Route path="/write/:writeMode" element={<WritePage />} />
             </Routes>
           </PageWrapper>
         </Layout>

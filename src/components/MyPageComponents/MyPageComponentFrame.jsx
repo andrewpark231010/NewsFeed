@@ -3,7 +3,6 @@ import * as St from './MyPageComponents.styled'
 import { useSelector } from 'react-redux'
 import EditProfileModal from '../Modals/EditProfileModal/EditProfileModal'
 import CardComponents from '../CommonComponents/CardComponents/CardComponents'
-import { useEffect } from 'react'
 
 function MyPageComponentFrame() {
   const modalToggle = useSelector((state) => state.modalToggle.editToggled)
@@ -21,6 +20,11 @@ function MyPageComponentFrame() {
         <St.MyPost>
           My 작성글 - <span>{userData.length}개</span>
         </St.MyPost>
+        {userData.length === 0 && (
+          <St.MainCardListNoListMessage>
+            <span>등록된 내용이 없습니다.</span>
+          </St.MainCardListNoListMessage>
+        )}
         <St.MyPostList>
           {userData.map((post) => (
             <CardComponents key={post.id} data={post} />

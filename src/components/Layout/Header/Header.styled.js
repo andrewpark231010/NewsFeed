@@ -8,6 +8,7 @@ export const StHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 `
 export const StHeaderTitle = styled.div`
   display: flex;

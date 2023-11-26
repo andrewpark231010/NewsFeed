@@ -17,6 +17,14 @@ export const MyBox = styled.div`
     height: auto;
   }
 `
+export const MainCardListNoListMessage = styled.div`
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 5rem 0;
+  font-weight: bold;
+  color: ${(props) => props.theme.mainColor};
+`
+
 export const MyImgWrapper = styled.figure`
   width: 22rem;
   height: 22rem;
@@ -53,11 +61,6 @@ export const MyProfileNickName = styled.h2`
 
 export const MyEditBtn = styled.button`
   color: ${(props) => props.theme.mainColor};
-
-  /* background-image: url(${editIcon});
-  background-size: cover;
-  width: 2.5rem;
-  height: 2.5rem; */
   margin-top: 0.5rem;
   margin-left: 0.9rem;
   background: none;
