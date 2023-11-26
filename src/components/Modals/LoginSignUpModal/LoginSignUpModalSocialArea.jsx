@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './LoginSignUpModal.styled'
-import { github, google, twitter } from '../../../styles/images'
-import { auth, getMemberRef } from '../../../API/Firebase/Firebase'
+import { github, google, facebook } from '../../../styles/images'
+import { auth } from '../../../API/Firebase/Firebase'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  FacebookAuthProvider,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth'
 import LoadingProgress from '../../CommonComponents/LoadingProgress'
-import { getDoc, setDoc } from 'firebase/firestore'
 
 const LoginSignUpModalSocialArea = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -14,13 +18,13 @@ const LoginSignUpModalSocialArea = () => {
   const currentMode = useSelector(
     (state) => state.modalToggle.loginSignUpModalMode
   )
+
   const googleLoginHandler = () => {
     const googleProvider = new GoogleAuthProvider()
     const loginUserGoogleAuthHandler = async () => {
       try {
         setIsLoading(true)
-        const result = await signInWithPopup(auth, googleProvider)
-        const credential = GoogleAuthProvider.credentialFromResult(result)
+        await signInWithPopup(auth, googleProvider)
         setIsLoading(false)
         dispatch(loginSignUpModalToggle())
       } catch (err) {
@@ -30,12 +34,46 @@ const LoginSignUpModalSocialArea = () => {
     }
     loginUserGoogleAuthHandler()
   }
+
+  const githubLoginHandler = () => {
+    const githubProvider = new GithubAuthProvider()
+    const loginUserGithubAuthHandler = async () => {
+      try {
+        setIsLoading(true)
+        await signInWithPopup(auth, githubProvider)
+        setIsLoading(false)
+        dispatch(loginSignUpModalToggle())
+      } catch (err) {
+        console.error(err)
+        const credential = GithubAuthProvider.credentialFromError(err)
+        console.log(`<<깃허브로그인 오류>> ${credential}`, credential)
+      }
+    }
+    loginUserGithubAuthHandler()
+  }
+
+  const facebookLoginHandler = () => {
+    const facebookProvider = new FacebookAuthProvider()
+    const loginUserGithubAuthHandler = async () => {
+      try {
+        setIsLoading(true)
+        await signInWithPopup(auth, facebookProvider)
+        setIsLoading(false)
+        dispatch(loginSignUpModalToggle())
+      } catch (err) {
+        console.error(err)
+        const credential = facebookProvider.credentialFromError(err)
+        console.log(`<<페이스북로그인 오류>> ${credential}`, credential)
+      }
+    }
+    loginUserGithubAuthHandler()
+  }
   return (
     <S.StLoginModalSocialAreaDiv>
       <LoadingProgress loading={isLoading} />
       <span>소셜계정으로 {currentMode.text}</span>
       <S.StLoginModalSocialButtonDiv>
-        <button>
+        <button onClick={githubLoginHandler}>
           <figure>
             <img src={github} />
           </figure>
@@ -45,9 +83,9 @@ const LoginSignUpModalSocialArea = () => {
             <img src={google} />
           </figure>
         </button>
-        <button>
+        <button onClick={facebookLoginHandler}>
           <figure>
-            <img src={twitter} />
+            <img src={facebook} />
           </figure>
         </button>
       </S.StLoginModalSocialButtonDiv>

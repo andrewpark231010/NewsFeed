@@ -83,7 +83,7 @@ const HeaderNavArea = ({ setMenuToggled, menuToggled }) => {
             menuToggled={menuToggled}
           />
           {HEADER_BUTTON.filter(
-            (button) => button.loginVisible === !!userInfo.email
+            (button) => button.loginVisible === !!userInfo.uid
           ).map((button) => (
             <HeaderButton
               key={button.text}

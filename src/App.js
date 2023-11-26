@@ -31,6 +31,7 @@ function App() {
     setIsLoading(true)
     getPostData()
     onAuthStateChanged(auth, (user) => {
+      console.log(user)
       const getIntroduce = async () => {
         const data = await getDoc(getMemberRef(user.uid))
         if (data.data()) {
