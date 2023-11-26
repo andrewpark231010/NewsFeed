@@ -17,5 +17,4 @@ const DetailModal = () => {
     </>
   )
 }
-
 export default DetailModal

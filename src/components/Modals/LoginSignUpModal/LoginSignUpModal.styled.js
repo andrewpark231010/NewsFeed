@@ -19,6 +19,14 @@ export const StDiv = styled.div`
   & > span {
     font-weight: bold;
   }
+  @media (max-width: 800px) {
+    padding: 3rem;
+    font-size: 2rem;
+    & > span {
+      font-weight: bold;
+      font-size: 3rem;
+    }
+  }
 `
 export const StModalForm = styled.form`
   margin: 8.5rem 0 5rem 0;
@@ -50,14 +58,25 @@ export const StModalForm = styled.form`
     color: white;
     cursor: pointer;
   }
+  @media (max-width: 800px) {
+    margin: 3rem 0 3rem 0;
+    width: 100%;
+    & > input {
+      width: 100%;
+      height: 4rem;
+      font-size: 1.5rem;
+      padding: 0 5em 0 0.5em;
+    }
+    & > button {
+      min-width: 9rem;
+      font-size: 2rem;
+    }
+  }
 `
 export const StLoginModalSocialAreaDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  & > button {
-    margin: 2.5rem;
-  }
 `
 export const StLoginModalSocialButtonDiv = styled.div`
   display: flex;
@@ -66,6 +85,13 @@ export const StLoginModalSocialButtonDiv = styled.div`
     cursor: pointer;
     margin: 2.5rem;
     background: none;
+  }
+  @media (max-width: 800px) {
+    margin-bottom: 4rem;
+    & > button {
+      margin: 1rem;
+      zoom: 0.8;
+    }
   }
 `
 export const StModeChangeDiv = styled.div`
@@ -78,5 +104,8 @@ export const StModeChangeDiv = styled.div`
     background: none;
     margin-left: 0.5rem;
     cursor: pointer;
+  }
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
   }
 `

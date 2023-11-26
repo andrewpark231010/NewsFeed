@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import check from '../../styles/images/WritePageImage/check.svg'
 export const WPCategoryDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -8,6 +7,7 @@ export const WPCategoryDiv = styled.div`
   position: relative;
 
   & > select {
+    transition: 0.5s;
     width: 20rem;
     height: 3rem;
     font-size: 2rem;
@@ -26,6 +26,7 @@ export const WPCategoryDiv = styled.div`
   }
 `
 export const WPCustomImgUseCheckBox = styled.div`
+  transition: 0.5s;
   color: ${(props) => props.theme.mainColor};
   font-size: 2rem;
   position: absolute;
@@ -38,6 +39,7 @@ export const WPCustomImgUseCheckBox = styled.div`
     height: 1.5rem;
     border-radius: 3px;
     border: 2px solid ${(props) => props.theme.mainColor};
+    transition: 0.5s;
   }
   & input:checked {
     background: ${(props) => props.theme.mainColor};
@@ -57,6 +59,10 @@ export const WPCategoryFileInput = styled.div`
   }
   & label {
     cursor: pointer;
+    & > svg {
+      transition: 0.5s;
+      color: ${(props) => props.theme.mainColor};
+    }
   }
   & span {
     margin-left: 1rem;
@@ -69,7 +75,7 @@ export const WPCategoryFileInput = styled.div`
     }
     & span {
       margin-left: 0.5rem;
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
 `
@@ -81,6 +87,7 @@ export const WPcontainerForm = styled.form`
 `
 
 export const WPtitle = styled.input`
+  transition: 0.5s;
   background-color: transparent;
   color: ${(props) => props.theme.mainColor};
   font-size: 5rem;
@@ -94,6 +101,7 @@ export const WPtitle = styled.input`
   }
 `
 export const WPtextarea = styled.textarea`
+  transition: 0.5s;
   background-color: transparent;
   font-size: 4rem;
   color: ${(props) => props.theme.mainColor};
@@ -108,8 +116,10 @@ export const WPtextarea = styled.textarea`
 `
 
 export const CompleteBtn = styled.button`
+  transition: 0.5s;
   font-size: 1.6rem;
   padding: 1.3rem 3rem;
+  margin-bottom: 1rem;
   cursor: pointer;
   align-self: end;
   background: #1c1c1c;

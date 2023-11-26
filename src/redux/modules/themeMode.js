@@ -9,16 +9,23 @@ export const toggleTheme = () => {
 }
 
 const initState = {
-  mode: 'light',
-  iconImage: light,
+  mode: localStorage.getItem('themeMode'),
+  iconImage: localStorage.getItem('themeMode') === 'light' ? light : dark,
 }
 
 const themeMode = (state = initState, { type }) => {
   switch (type) {
     case TOGGLE_THEME:
-      return state.mode === 'light'
-        ? { ...state, mode: 'dark', iconImage: dark }
-        : { ...state, mode: 'light', iconImage: light }
+      if (state.mode === 'light') {
+        localStorage.setItem('themeMode', 'dark')
+        return { ...state, mode: 'dark', iconImage: dark }
+      } else {
+        localStorage.setItem('themeMode', 'light')
+        return { ...state, mode: 'light', iconImage: light }
+      }
+    // return state.mode === 'light'
+    //   ? { ...state, mode: 'dark', iconImage: dark }
+    //   : { ...state, mode: 'light', iconImage: light }
     default:
       return state
   }

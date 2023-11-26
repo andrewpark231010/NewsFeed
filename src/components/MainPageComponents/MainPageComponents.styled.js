@@ -12,12 +12,13 @@ export const MainNavSectionDiv = styled.div`
     font-size: 2rem;
     color: ${(props) => props.theme.mainColor};
     border: 2px solid ${(props) => props.theme.mainColor};
+    transition: 0.5s;
   }
   @media (max-width: 500px) {
     & > select {
       width: 13rem;
       height: 3rem;
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 `
@@ -27,6 +28,7 @@ export const MainCardListUl = styled.ul`
   grid-template-columns: repeat(auto-fill, minmax(20%, auto));
   grid-gap: 2rem 0;
   justify-items: center;
+  margin-bottom: 2rem;
   @media (max-width: 1200px) {
     grid-template-columns: repeat(auto-fill, minmax(25%, auto));
   }
@@ -40,15 +42,29 @@ export const MainCardListUl = styled.ul`
 
 export const MainNavSortItem = styled.span`
   font-size: 2rem;
-  border-bottom: ${(props) =>
-    props.$isSelected === props.value
-      ? `4px solid ${props.theme.mainColor}`
-      : 'none'};
+  transition:
+    color 0.5s,
+    border 0.1s;
+  border-bottom: 4px solid
+    ${(props) =>
+      props.$isSelected === props.value
+        ? `${props.theme.mainColor}`
+        : 'transition'};
   cursor: pointer;
-  transition: border 0.1s;
   color: ${(props) => props.theme.mainColor};
 
   &:first-child {
     margin-right: 1rem;
   }
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
+`
+
+export const MainCardListNoListMessage = styled.div`
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 10rem;
+  font-weight: bold;
+  color: ${(props) => props.theme.mainColor};
 `

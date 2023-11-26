@@ -6,7 +6,7 @@ import light from './HeaderImage/light.svg'
 
 import github from './LoginSignUpModal/github.svg'
 import google from './LoginSignUpModal/google.svg'
-import twitter from './LoginSignUpModal/twitter.svg'
+import facebook from './LoginSignUpModal/facebook.svg'
 
 import editIcon from './MyPageImage/editicon.svg'
 import sampleImg from './MyPageImage/sampleImg.jpg'
@@ -20,7 +20,7 @@ export {
   light,
   github,
   google,
-  twitter,
+  facebook,
   editIcon,
   sampleImg,
   MyProfileUploadImg,

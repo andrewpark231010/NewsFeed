@@ -22,6 +22,9 @@ export const detailModalBtnContainer = styled.div`
   top: 2rem;
   display: flex;
   align-items: center;
+  @media (max-width: 500px) {
+    zoom: 0.8;
+  }
 `
 export const CloseButton = styled.button`
   width: 4.5rem;
@@ -95,12 +98,19 @@ export const StFirstDiv = styled.div`
 `
 export const StDetailModalTitle = styled.h1`
   margin: 5.5rem 0 3.5rem 0;
+  width: 100%;
   font-size: 4rem;
   font-weight: bold;
+  word-wrap: break-word;
+  @media (max-width: 500px) {
+    margin: 8rem 0 2rem 0;
+    font-size: 3rem;
+  }
 `
 export const StFirstLineUserInfo = styled.div`
   display: flex;
   margin-bottom: 3rem;
+  align-items: center;
   & div {
     display: flex;
     flex-direction: column;
@@ -112,13 +122,25 @@ export const StFirstLineUserInfo = styled.div`
     height: 6.5rem;
     object-fit: cover;
   }
+  @media (max-width: 500px) {
+    & img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
 `
 export const StDetailModalDate = styled.span`
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
 `
 export const StDetailModalUserName = styled.h2`
   font-size: 3rem;
+  @media (max-width: 500px) {
+    font-size: 2rem;
+  }
 `
 export const StSecondLineContent = styled.p`
   padding: 4rem;
@@ -130,11 +152,15 @@ export const StSecondLineContent = styled.p`
   white-space: pre-line;
   line-height: 4rem;
   letter-spacing: 0.1rem;
+  word-wrap: break-word;
   &::-webkit-scrollbar {
     width: 10px;
   }
   &::-webkit-scrollbar-thumb {
     background-color: black;
     border-radius: 10px;
+  }
+  @media (max-width: 500px) {
+    height: 20rem;
   }
 `
