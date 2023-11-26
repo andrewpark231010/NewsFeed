@@ -77,7 +77,7 @@ function EditNickNameAndIntroForm() {
       <St.StImgBox>
         <St.StLabel $img={MyProfileUploadImg} htmlFor="img"></St.StLabel>
         <St.StImgInput onChange={imgSelectHandler} type="file" id="img" />
-        <St.StImgSpan>{img.name}</St.StImgSpan>
+        <St.StImgSpan>{img ? img.name : '파일을 선택하세요'}</St.StImgSpan>
       </St.StImgBox>
 
       <St.StInputDiv>
