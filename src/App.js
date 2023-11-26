@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import Router from './router/Router'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth, db, getMemberRef } from './API/Firebase/Firebase'
+import { onAuthStateChanged, updateProfile } from 'firebase/auth'
+import { auth, db, getMemberRef, pathReference } from './API/Firebase/Firebase'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserInfo } from './redux/modules/user'
 import {
@@ -17,6 +17,7 @@ import GlobalStyle from './styles/GlobalStyle'
 import { GlobalFont } from './styles/fonts'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
+import { getDownloadURL, ref } from '@firebase/storage'
 
 function App() {
   const dispatch = useDispatch()
@@ -30,20 +31,31 @@ function App() {
 
   if (localStorage.getItem('themeMode') === null)
     localStorage.setItem('themeMode', 'light')
-
+  const data = useSelector((state) => state.user.currentUserInfo)
   useEffect(() => {
     getPostData()
     onAuthStateChanged(auth, (user) => {
-      console.log(user)
       const getIntroduce = async () => {
         const data = await getDoc(getMemberRef(user.uid))
+
         if (data.data()) {
           dispatch(getUserInfo({ ...user, introduce: data.data().introduce }))
         } else {
           await setDoc(getMemberRef(user.uid), {
             introduce: '',
           })
-          dispatch(getUserInfo({ ...user, introduce: '' }))
+          if (!user.displayName && !user.photoURL) {
+            const fileName = 'defaultUser.webp'
+            const url = await getDownloadURL(ref(pathReference, fileName))
+            console.log('update')
+            console.log(user.email.split('@')[0], url)
+            updateProfile(auth.currentUser, {
+              displayName: user.email.split('@')[0],
+              photoURL: url,
+            })
+            console.log(auth.currentUser)
+            dispatch(getUserInfo({ ...auth.currentUser, introduce: '' }))
+          }
         }
       }
       user && getIntroduce()

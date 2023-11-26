@@ -10,6 +10,7 @@ import { auth, pathReference } from '../../../API/Firebase/Firebase'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
 import LoadingProgress from '../../CommonComponents/LoadingProgress'
 import { getDownloadURL, ref } from 'firebase/storage'
+import { getUserInfo } from '../../../redux/modules/user'
 
 const LoginSignUpModalForm = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -37,11 +38,7 @@ const LoginSignUpModalForm = () => {
     if (!validationCheck(email, password)) return
     try {
       setIsLoading(true)
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
+      await signInWithEmailAndPassword(auth, email, password)
       setIsLoading(false)
       dispatch(loginSignUpModalToggle())
     } catch (err) {
@@ -54,17 +51,13 @@ const LoginSignUpModalForm = () => {
   const signUpNewUserHandler = async () => {
     try {
       setIsLoading(true)
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      )
-      const fileName = 'defaultUser.webp'
-      const url = await getDownloadURL(ref(pathReference, fileName))
-      updateProfile(auth.currentUser, {
-        displayName: userCredential.user.email.split('@')[0],
-        photoURL: url,
-      })
+      await createUserWithEmailAndPassword(auth, email, password)
+      // const fileName = 'defaultUser.webp'
+      // const url = await getDownloadURL(ref(pathReference, fileName))
+      // updateProfile(auth.currentUser, {
+      //   displayName: userCredential.user.email.split('@')[0],
+      //   photoURL: url,
+      // })
       setIsLoading(false)
       dispatch(loginSignUpModalToggle())
     } catch (err) {
