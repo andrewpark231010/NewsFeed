@@ -31,7 +31,6 @@ function App() {
 
   if (localStorage.getItem('themeMode') === null)
     localStorage.setItem('themeMode', 'light')
-  const data = useSelector((state) => state.user.currentUserInfo)
   useEffect(() => {
     getPostData()
     onAuthStateChanged(auth, (user) => {
