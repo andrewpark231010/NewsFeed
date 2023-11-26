@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { editIcon } from '../../styles/images'
 
 // 프로필 - 이미지,닉네임,수정버튼,이메일,소개글
 export const MyBox = styled.div`

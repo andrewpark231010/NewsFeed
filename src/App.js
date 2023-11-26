@@ -47,13 +47,10 @@ function App() {
           if (!user.displayName && !user.photoURL) {
             const fileName = 'defaultUser.webp'
             const url = await getDownloadURL(ref(pathReference, fileName))
-            console.log('update')
-            console.log(user.email.split('@')[0], url)
             updateProfile(auth.currentUser, {
               displayName: user.email.split('@')[0],
               photoURL: url,
             })
-            console.log(auth.currentUser)
             dispatch(getUserInfo({ ...auth.currentUser, introduce: '' }))
           }
         }

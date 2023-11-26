@@ -4,13 +4,10 @@ import * as S from './LoginSignUpModal.styled'
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  updateProfile,
 } from 'firebase/auth'
-import { auth, pathReference } from '../../../API/Firebase/Firebase'
+import { auth } from '../../../API/Firebase/Firebase'
 import { loginSignUpModalToggle } from '../../../redux/modules/modalToggle'
 import LoadingProgress from '../../CommonComponents/LoadingProgress'
-import { getDownloadURL, ref } from 'firebase/storage'
-import { getUserInfo } from '../../../redux/modules/user'
 
 const LoginSignUpModalForm = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -52,12 +49,6 @@ const LoginSignUpModalForm = () => {
     try {
       setIsLoading(true)
       await createUserWithEmailAndPassword(auth, email, password)
-      // const fileName = 'defaultUser.webp'
-      // const url = await getDownloadURL(ref(pathReference, fileName))
-      // updateProfile(auth.currentUser, {
-      //   displayName: userCredential.user.email.split('@')[0],
-      //   photoURL: url,
-      // })
       setIsLoading(false)
       dispatch(loginSignUpModalToggle())
     } catch (err) {
