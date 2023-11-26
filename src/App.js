@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Router from './router/Router'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db, getMemberRef } from './API/Firebase/Firebase'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserInfo } from './redux/modules/user'
-import LoadingProgress from './components/CommonComponents/LoadingProgress'
 import {
   collection,
   getDoc,
@@ -21,7 +20,6 @@ import theme from './styles/theme'
 
 function App() {
   const dispatch = useDispatch()
-
   const getPostData = async () => {
     const q = query(collection(db, 'post'), orderBy('date', 'desc'))
     const querySnapshot = await getDocs(q)
@@ -29,7 +27,9 @@ function App() {
     querySnapshot.forEach((item) => postData.push(item.data()))
     dispatch(setPostData(postData))
   }
-
+  localStorage.getItem('themeMode') === null
+    ? localStorage.setItem('themeMode', 'light')
+    : ''
   useEffect(() => {
     getPostData()
     onAuthStateChanged(auth, (user) => {
